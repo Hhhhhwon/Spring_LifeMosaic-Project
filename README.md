@@ -1,6 +1,6 @@
 # LifeMosaic - 프로젝트 포트폴리오
 
-![alt text](logo.png)
+![logo](https://github.com/Hhhhhwon/spring-maven/assets/147058027/ea1dc98a-cb06-409a-b080-a4d7115d8433)
 
 ---
 
@@ -31,11 +31,13 @@
 - Spring 프로젝트 진행
 - 취합 및 에러 처리
 
-![alt text](image.png)
+![image](https://github.com/Hhhhhwon/spring-maven/assets/147058027/73e13a7f-55c5-49ca-bf11-0b58df3afe94)
+
 
 # 🛠️ 프로젝트 역할
 
-![alt text](image-1.png)
+![image-1](https://github.com/Hhhhhwon/spring-maven/assets/147058027/2b0beafb-3269-424a-817a-bd2d40fb4833)
+
 
 # ⚙️ 주요 기능
 - 게시글 작성, 수정, 삭제 (CRUD)
@@ -50,7 +52,8 @@
 ##  담당 업무
 
 ### 좋아요 싫어요 수정 그래프 수치화 즉시반영 및 중복 선택 불가능
-![alt text](녹화_2024_02_23_13_31_28_653.gif)
+![녹화_2024_02_23_13_31_28_653](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5b0e2aed-7875-4ca9-9e16-5a05a0eaeace)
+
 ```javascript
 // Chart.js 라이브러리를 이용하여 생성된 도넛 차트(Donut Chart)를 관리하는 부분.
 
@@ -67,7 +70,8 @@ if (existingChart) {
 ```
 
 ### 에디터를 이용한 상세보기 시 클릭한 링크로 이동 및 동영상 추가 (Youtube video)
-![alt text](녹화_2024_02_23_16_22_37_451.gif)
+![녹화_2024_02_23_16_22_37_451](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5c01d7d1-001e-479a-aec8-b4fc77906532)
+
 ```javascript
 
 // 동영상
@@ -132,7 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 ### 댓글, 대댓글 CRUD 및 태그 명확화
-![alt text](녹화_2024_02_23_13_32_08_340.gif)
+![녹화_2024_02_23_13_32_08_340](https://github.com/Hhhhhwon/spring-maven/assets/147058027/b628a90b-33f5-4ede-adfc-9a947b45d28b)
+
 ### 🚨 
 - 알 수 없는 오류로 comment.js 가 열리지않아 코드 첨부가 어려움..
 - 최종 커밋을 못했기 때문에 해결하면 올릴예정입니다
