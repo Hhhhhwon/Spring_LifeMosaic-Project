@@ -1,10 +1,9 @@
 # LifeMosaic - 프로젝트 포트폴리오
 
-<<<<<<< HEAD
-![alt text](logo-1.png)
-=======
+
+
 ![logo](https://github.com/Hhhhhwon/spring-maven/assets/147058027/ea1dc98a-cb06-409a-b080-a4d7115d8433)
->>>>>>> 8738d14faaefc3e8561ec77580439f32cbaf20e7
+
 
 ---
 
