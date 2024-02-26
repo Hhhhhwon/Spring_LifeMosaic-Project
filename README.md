@@ -247,8 +247,7 @@ function timeAgo(date) {
 ```
 
 ### 사용자 편의성 에러 핸들러 페이지
-[![alt text](image.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/%EB%85%B9%ED%99%94_2024_02_23_16_49_57_355.gif?raw=true)
-
+![alt text](녹화_2024_02_23_16_49_57_355.gif)
 ```xml
 
 <!-- web.xml 파일에 등록된 설정으로, 각각의 에러 코드에 대해 "/error" 경로로 이동. -->
