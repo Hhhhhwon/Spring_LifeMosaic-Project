@@ -49,58 +49,58 @@
 
 ## 홈 화면
 
-![alt text](image-2.png)
+[![alt text](image-2.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-2.png?raw=true)
 
 ## 메인 페이지
-![alt text](image-3.png)
+[![alt text](image-3.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-3.png?raw=true)
 
 ## 로그인 페이지
-![alt text](image-4.png)
+[![alt text](image-4.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-4.png?raw=true)
 
 ## 회원가입 페이지
 
-![alt text](image-5.png)
+[![alt text](image-5.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-5.png?raw=true)
 
 ## 마이 페이지
 
-![alt text](image-6.png)
+[![alt text](image-6.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-6.png?raw=true)
 
 ## 마이 페이지 (프로필)
 
-![alt text](image-7.png)
+[![alt text](image-7.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-7.png?raw=true)
 
 ## 마이 페이지(계정관리 및 스크랩)
 
-![alt text](image-8.png)
-![alt text](image-9.png)
+[![alt text](image-8.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-8.png?raw=true)
+[![alt text](image-9.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-9.png?raw=true)
 
 ## 회원 게시글 페이지
 
-![alt text](image-10.png)
+[![alt text](image-10.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-10.png?raw=true)
 
 ## 게시판 리스트 페이지
 
-![alt text](image-11.png)
+[![alt text](image-11.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-11.png?raw=true)
 
 ## 글 작성 페이지
 
-![alt text](image-12.png)
+[![alt text](image-12.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-12.png?raw=true)
 
 ## 글 수정 페이지 
 
-![alt text](image-13.png)
+[![alt text](image-13.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-13.png?raw=true)
 
 ## 글 상세 페이지
 
-![alt text](image-14.png)
+[![alt text](image-14.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-14.png?raw=true)
 
-![alt text](image-15.png)
+[![alt text](image-15.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-15.png?raw=true)
 
-![alt text](image-16.png)
+[![alt text](image-16.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-16.png?raw=true)
 
 ## 검색 페이지
 
-![alt text](image-17.png)
+[![alt text](image-17.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-17.png?raw=true)
   
 
 
@@ -247,7 +247,7 @@ function timeAgo(date) {
 ```
 
 ### 사용자 편의성 에러 핸들러 페이지
-![alt text](녹화_2024_02_23_16_49_57_355.gif)
+[![alt text](image.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/%EB%85%B9%ED%99%94_2024_02_23_16_49_57_355.gif?raw=true)
 
 ```xml
 
