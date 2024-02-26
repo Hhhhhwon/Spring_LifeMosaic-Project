@@ -49,58 +49,53 @@
 
 ## 홈 화면
 
-[![alt text](image-2.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-2.png?raw=true)
-
+![alt text](image-2.png)
 ## 메인 페이지
-[![alt text](image-3.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-3.png?raw=true)
-
+![alt text](image-3.png)
 ## 로그인 페이지
-[![alt text](image-4.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-4.png?raw=true)
+![alt text](image-4.png)
 
 ## 회원가입 페이지
 
-[![alt text](image-5.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-5.png?raw=true)
-
+![alt text](image-5.png)
 ## 마이 페이지
 
-[![alt text](image-6.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-6.png?raw=true)
+![alt text](image-6.png)
 
 ## 마이 페이지 (프로필)
 
-[![alt text](image-7.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-7.png?raw=true)
+![alt text](image-7.png)
 
 ## 마이 페이지(계정관리 및 스크랩)
 
-[![alt text](image-8.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-8.png?raw=true)
-[![alt text](image-9.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-9.png?raw=true)
+![alt text](image-8.png)
+![alt text](image-9.png)
 
 ## 회원 게시글 페이지
 
-[![alt text](image-10.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-10.png?raw=true)
-
+![alt text](image-10.png)
 ## 게시판 리스트 페이지
 
-[![alt text](image-11.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-11.png?raw=true)
+![alt text](image-11.png)
 
 ## 글 작성 페이지
 
-[![alt text](image-12.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-12.png?raw=true)
+![alt text](image-12.png)
 
 ## 글 수정 페이지 
 
-[![alt text](image-13.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-13.png?raw=true)
+![alt text](image-13.png)
 
 ## 글 상세 페이지
 
-[![alt text](image-14.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-14.png?raw=true)
+![alt text](image-14.png)
 
-[![alt text](image-15.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-15.png?raw=true)
+![alt text](image-15.png)
 
-[![alt text](image-16.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-16.png?raw=true)
+![alt text](image-16.png)
 
 ## 검색 페이지
-
-[![alt text](image-17.png)](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-17.png?raw=true)
+![alt text](image-17.png)
   
 
 
