@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwill.project.repository.LikeDao">
+    
+    <!-- 포스트 아이디로 좋아요와 싫어요 숫자를 검색 -->
+    <select id="likeCount" resultType="PostLike">
+        select * from post_like where post_id = #{post_id}
+    </select>
+    
+    <!-- 해당 유저의 해당 포스트에 대한 좋,실 체크 테이블 뷰가 있는지를 검색 -->
+    <select id="postLikeCheck" resultType="int">
+        select count(*) as count from post_like_check where post_id = #{post_id} and user_id = #{user_id}
+    </select>
+    
+    <!-- 해당 유저가 해당 테이블에 좋아요 혹은 싫어요를 눌렀는지를 검색 -->
+    <select id="postLikeDetailCheck" resultType="PostLikeCheck">
+        select * from post_like_check where post_id = #{post_id} and user_id = #{user_id}
+    </select>
+    
+    <!-- 해당 유저가 좋아요를 누르면 기록됨 -->
+    <update id="likeCheck">
+        update post_like_check set like_check = like_check + 1 where post_id = #{post_id} and user_id = #{user_id}
+    </update>
+    
+    <!-- 해당 유저가 싫어요를 누르면 기록됨 -->
+    <update id="dislikeCheck">
+        update post_like_check set dislike_check = dislike_check + 1 where post_id = #{post_id} and user_id = #{user_id}
+    </update>
+    
+    <!-- 해당 유저의 해당 포스터에 대한 좋,실 테이블 뷰를 생성 -->
+    <insert id="makePostLikeCheck">
+        INSERT INTO post_like_check (POST_ID, USER_ID) 
+        VALUES (#{post_id}, #{user_id})
+    </insert>
+    
+    <!-- 좋아요 +1 -->
+    <update id="postLikeIncrease">
+        UPDATE post_like SET like_point = like_point + 1 WHERE post_id = #{post_id}
+    </update>
+    
+    <!-- 싫어요 +1 -->
+    <update id="postLikeDecrease">
+        UPDATE post_like SET dislike_point = dislike_point + 1 WHERE post_id = #{post_id}
+    </update>
+    
+    <!-- 좋아요 -1 -->
+    <update id="postLikeCancel">
+        UPDATE post_like SET like_point = like_point - 1 WHERE post_id = #{post_id}
+    </update>
+    
+    <!-- 싫어요 -1 -->
+    <update id="postDislikeCancel">
+        UPDATE post_like SET dislike_point = dislike_point - 1 WHERE post_id = #{post_id}
+    </update>
+    
+    <!-- 해당 유저가 좋아요 기록이 취소 됨 -->
+    <update id="likeCheckCancel">
+        update post_like_check set like_check = like_check - 1 where post_id = #{post_id} and user_id = #{user_id}
+    </update>
+    
+    <!-- 해당 유저가 싫어요 기록이 취소 됨 -->
+    <update id="dislikeCheckCancel">
+        update post_like_check set dislike_check = dislike_check - 1 where post_id = #{post_id} and user_id = #{user_id}
+    </update>
+    
+</mapper>

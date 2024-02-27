@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.itwill.project.repository.MemberDao">
+    
+<!-- 회원의 프로필 이미지 가져오기 -->
+		<select id="selectMemberProfileUrl" resultType="String">
+		select profile_url from users where nickname =#{nickname}
+		</select>    
+<!--회원의 포스트 페이지(개수만 가져오기) -->
+	<select id="selectTotalPages" resultType="Integer">
+	select count(*) from posts where user_id = ( select user_id from users where nickname = #{nickname})
+	</select>
+
+<!-- 회원의 포스트 페이지(페이지 기능) -->
+	<select id="selectMemberPostList" resultType="MemberPostListItem">
+	SELECT *
+FROM (
+    SELECT
+        rownum AS "row_num",
+        "post_title",
+        "post_user_id",
+        "post_created_time",
+        "post_view_count",
+        "post_user_profile_url",
+        "post_nickname",
+        "post_subcategory",
+        "post_subcategory_id",
+        "post_id",
+        "post_like_count",
+        "comment_count"
+    FROM (
+        SELECT
+            p.title AS "post_title",
+            p.user_id AS "post_user_id",
+            TO_CHAR(p.created_time, 'YYYY.MM.dd HH:mm') AS "post_created_time",
+            p.view_count AS "post_view_count",
+             u.profile_url AS "post_user_profile_url",
+            u.nickname AS "post_nickname",
+            sc.sub_category_name AS "post_subcategory",
+             p.sub_category_id as "post_subcategory_id",
+            p.post_id as "post_id",
+            COALESCE(pl.like_point, 0) AS "post_like_count",
+            (SELECT COUNT(*) FROM COMMENTS WHERE POST_ID = p.POST_ID) AS "comment_count"
+        FROM
+            POSTS p
+            LEFT JOIN POST_LIKE pl ON pl.POST_ID = p.POST_ID
+            LEFT JOIN USERS u ON p.USER_ID = u.USER_ID
+            LEFT JOIN sub_category sc ON p.sub_category_id = sc.sub_category_id
+        WHERE
+            p.USER_ID = ( select user_id from users where nickname = #{nickname})
+        ORDER BY
+            p.CREATED_TIME DESC
+    )
+)
+WHERE "row_num" BETWEEN #{startNum} AND #{endNum}
+
+	</select>
+	 </mapper>

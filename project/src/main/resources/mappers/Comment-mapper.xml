@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwill.project.repository.CommentDao">
+
+    <select id="commentCheck" resultType="java.lang.Long">
+        select count(*) as count from comments where post_id = #{post_id}
+    </select>
+    
+    <select id="getAllComment" resultType="Comment">
+        SELECT *
+        FROM (
+          SELECT ROWNUM AS rnum, sub.*
+          FROM (
+            SELECT c.*, u.nickname, u.profile_url, cl.like_point, cl.dislike_point
+            FROM comments c
+            JOIN users u ON c.user_id = u.user_id
+            JOIN comment_like cl ON c.comment_id = cl.comment_id
+            WHERE c.post_id = #{post_id}
+            order by comment_created_time desc
+          ) sub
+        )
+        WHERE rnum BETWEEN #{commentStart} AND #{commentEnd}
+    </select>
+    
+    <select id="getRecomment" resultType="Recomment">
+        select r.*, u.nickname, u.profile_url, rcl.like_point, rcl.dislike_point 
+            from re_comments r
+            join users u on r.user_id = u.user_id
+            join re_comment_like rcl on r.re_comment_id = rcl.re_comment_id
+            where r.comment_id = #{comment_id}
+            order by recomment_created_time
+    </select>
+    
+    <insert id="insert">
+        insert into comments (comment_content, user_id, post_id) values(#{comment_content}, #{user_id}, #{post_id})
+    </insert>
+    
+    <update id="update">
+        update comments set comment_content = #{comment_content}, comment_modified_time = systimestamp where comment_id = #{comment_id}
+    </update>
+    
+    <delete id="delete">
+    DELETE FROM comments WHERE comment_id = #{comment_id}
+	</delete>
+    
+    <!-- 여기부터 리코멘트 -->
+    
+   <insert id="insertRecomment">
+    INSERT INTO re_comments (recomment_content, user_id, comment_id) VALUES (#{recomment_content}, #{user_id}, #{comment_id})
+</insert>
+
+<update id="updateRecomment">
+    UPDATE re_comments SET recomment_content = #{recomment_content}, recomment_modified_time = systimestamp WHERE re_comment_id = #{re_comment_id}
+</update>
+
+<delete id="deleteRecomment">
+    DELETE FROM re_comments WHERE re_comment_id = #{re_comment_id}
+</delete>
+    
+</mapper>

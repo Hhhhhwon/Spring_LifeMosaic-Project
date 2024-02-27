@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- POSTS 테이블에서 CRUD에 필요한 SQL 문장들을 선언 -->
+<mapper namespace="com.itwill.project.repository.PostDao">
+
+	<!-- POSTS 테이블 전체 검색, 아이디 내림차순 정렬 -->
+	<select id="selectOrderByDesc" resultType="Post">
+		SELECT *
+		FROM
+		(
+		SELECT rownum as rnum, sub_query.*
+		FROM
+		(
+		SELECT posts.*, users.NICKNAME
+		FROM posts
+		INNER JOIN users ON posts.user_id = users.user_id
+		ORDER BY post_id DESC
+		) sub_query
+		WHERE rownum <![CDATA[ <= ]]>
+		#{pageEnd}
+		)
+		WHERE rnum <![CDATA[ >= ]]>
+		#{pageStart}
+	</select>
+
+	<select id="selectBySubCategoryIdOrderByDesc" resultType="Post">
+SELECT *
+FROM (
+    SELECT rownum as rnum, sub_query.*, pl.like_point, COALESCE(cc.comment_count, 0) AS comment_count, u.profile_url
+    FROM (
+        SELECT p.*, u.NICKNAME
+        FROM posts p
+        INNER JOIN users u ON p.user_id = u.user_id
+        WHERE sub_category_id = #{subCategoryId}
+        ORDER BY post_id DESC
+    ) sub_query
+    LEFT JOIN (
+        SELECT post_id, SUM(like_point) AS like_point
+        FROM post_like
+        GROUP BY post_id
+    ) pl ON sub_query.post_id = pl.post_id
+    LEFT JOIN (
+        SELECT post_id, COUNT(*) AS comment_count
+        FROM comments
+        GROUP BY post_id
+    ) cc ON sub_query.post_id = cc.post_id
+    INNER JOIN users u ON sub_query.user_id = u.user_id
+) 
+WHERE rnum <![CDATA[ <= ]]> #{pageEnd}
+  AND rnum <![CDATA[ >= ]]> #{pageStart}
+	</select>
+
+	<select id="postCount" resultType="java.lang.Long">
+		SELECT COUNT(*) FROM posts
+	</select>
+
+	<select id="postCountBySubCategoryId"
+		resultType="java.lang.Long">
+		SELECT COUNT(*) FROM posts where sub_category_id = #{subCategoryId}
+	</select>
+
+
+	<!-- POSTS 테이블에서 아이디(PK)로 검색 -->
+	<select id="selectById" resultType="PostDetail">
+		SELECT posts.*, users.NICKNAME, users.profile_url 
+        FROM posts
+		INNER JOIN users ON
+		posts.user_id = users.user_id
+		where post_id = #{post_id}
+	</select>
+
+	<update id="viewCountIncrease">
+		UPDATE posts SET view_count = view_count + 1 WHERE post_id = #{post_id}
+	</update>
+
+	<!-- POSTS 테이블에 새 포스트 삽입 -->
+	<insert id="insert" parameterType="Post" useGeneratedKeys="true"
+		keyColumn="post_id" keyProperty="post_id">
+		INSERT INTO POSTS (USER_ID, TITLE, CONTENT, sub_category_id)
+		VALUES (#{user_id}, #{title}, #{content}, #{sub_category_id})
+	</insert>
+
+	<!--POSTS 테이블에서 해당 아이디의 제목, 내용, 수정시간을 업데이트 -->
+	<update id="update">
+		update POSTS set TITLE = #{title},
+		CONTENT = #{content},
+		MODIFIED_TIME = systimestamp
+		where POST_ID = #{post_id}
+	</update>
+
+	<delete id="delete">
+		delete from POSTS where POST_ID = #{post_id}
+	</delete>
+
+	<!-- POSTS 테이블에서 제목, 내용, 제목 또는 내용, 작성자로 검색하기 <select id="search" resultType="Post"> 
+		<bind name="searchKeyword" value="'%' + keyword + '%'" /> select * from POSTS 
+		where <choose> <when test='category eq "t"'> upper(TITLE) like upper(#{searchKeyword}) 
+		</when> <when test='category eq "c"'> upper(CONTENT) like upper(#{searchKeyword}) 
+		</when> <when test='category eq "tc"'> upper(TITLE) like upper(#{searchKeyword}) 
+		or upper(CONTENT) like upper(#{searchKeyword}) </when> <when test='category 
+		eq "a"'> upper(AUTHOR) like upper(#{searchKeyword}) </when> </choose> order 
+		by ID desc </select> -->
+
+	<!-- 해시 태그 관련 sql문 -->
+	<!-- 동일한 해시태그가 있는지 검사 -->
+	<select id="selectHashTag" resultType="String">
+		select tag_name
+		from hashtag
+		where tag_name = #{tagname}
+	</select>
+
+	<!-- 포스트에 해당하는 해시태그 가져오기 -->
+	<select id="selectHashtagByPostid" resultType="String">
+		select h.tag_name
+		as "hashTag"
+		from post_hash ph
+		left join hashtag h on ph.tag_id =
+		h.tag_id
+		where post_id=#{post_id}
+	</select>
+
+	<!-- 해시태그 테이블에 태그 저장 -->
+	<insert id="insertHashTag">
+		insert into hashtag (tag_name) values (#{tagname})
+	</insert>
+
+	<!-- 태그 테이블과 포스트 테이블의 아이디들을 저장 -->
+	<update id="insertsPostHashTag" parameterType="java.util.List">
+		<foreach item="arr" collection="hashTag" separator=" "
+			open="INSERT ALL" close="SELECT * FROM DUAL">
+			INTO post_hash
+			values ( #{post_id}, (select
+			tag_id from hashtag where tag_name=#{arr}))
+		</foreach>
+	</update>
+
+	<!-- 포스트-태그 테이블의 데이터 삭제 -->
+	<delete id="deletePostHash">
+		delete from post_hash where post_id=#{post_id}
+	</delete>
+
+	<!-- 태그 다 가져옴 -->
+	<select id="selectTagList" resultType="String">
+		
+		select tag_name
+		from hashtag
+		where upper(tag_name) like upper( '%' || #{currentTag} || '%')
+	</select>
+
+</mapper>

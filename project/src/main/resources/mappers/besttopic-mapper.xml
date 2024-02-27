@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.project.repository.BestTopicDao">
+	<!-- 전체 게시글 베스트 10개 출력 -->
+	<select id="selectAllBestTopic" resultType="com.itwill.project.domain.BestTopic">
+		select s.sub_category_id, 
+						s.sub_category_name, 
+						p.post_id, 
+						p.title,
+						to_number(nvl(pl.like_point,0)) as "like_point",
+						p.VIEW_COUNT,
+						count(c.post_id) as "comment_cnt",
+						u.user_id,
+						u.nickname,
+						u.profile_url,
+						p.created_time
+		from posts p
+		left join sub_category s on p.sub_category_id = s.sub_category_id
+		left join post_like pl on p.post_id = pl.post_id
+		left join comments c on p.post_id = c.post_id
+		left join users u on p.user_id = u.user_id
+		where p.post_id in (select post_id from POSTS where created_time >= to_char(systimestamp-6, 'yyyymmdd'))
+		group by s.sub_category_id, 
+							s.sub_category_name, 
+							p.post_id, 
+							p.title,
+							like_point,
+							u.user_id,
+							u.nickname,
+							u.profile_url,
+							p.VIEW_COUNT,
+							p.created_time
+		order by "like_point" desc, p.VIEW_COUNT desc fetch first #{rank} rows only
+	</select>
+	
+		<select id="selectCategoryBestTopic" resultType="com.itwill.project.domain.BestTopic">
+		select s.sub_category_id, 
+						s.sub_category_name, 
+						p.post_id, 
+						p.title,
+						to_number(nvl(pl.like_point,0)) as "like_point",
+						count(c.post_id) as "comment_cnt",
+						u.user_id,
+						u.nickname,
+						u.profile_url,
+						p.created_time,
+						p.VIEW_COUNT
+		from posts p
+		left join sub_category s on p.sub_category_id = s.sub_category_id
+		left join post_like pl on p.post_id = pl.post_id
+		left join comments c on p.post_id = c.post_id
+		left join users u on p.user_id = u.user_id
+		where p.post_id in (select post_id from POSTS where created_time >= to_char(systimestamp-6, 'yyyymmdd'))
+		and p.sub_category_id = #{sub_category_id}
+		group by s.sub_category_id, 
+							s.sub_category_name, 
+							p.post_id, 
+							p.title, 
+							like_point,
+							u.user_id,
+							u.nickname,
+							u.profile_url,
+							p.created_time,
+							p.VIEW_COUNT
+		order by "like_point" desc, p.VIEW_COUNT desc fetch first 5 rows only
+		</select>
+
+</mapper>

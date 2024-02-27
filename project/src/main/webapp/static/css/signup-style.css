@@ -1,0 +1,96 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(157, 126, 234, 0.4);
+    width: 600px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This ensures that the main content and footer links are spaced apart */
+
+}
+
+.signup-container img {
+    width: 50%; /* 로고의 너비 조절 */
+    height: auto; /* 높이 자동 조절 */
+    margin-left: auto; /* 로고를 오른쪽으로 이동시킴 */
+    margin-right: 20px; /* 로고와 내용 간격을 조정할 수 있도록 수정 */
+}
+
+.form-group {
+    margin-top: 20px; /* 아이디 입력 창 위에 공간 추가 */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #F3F1F5; /* 배경색 설정 */
+}
+
+.form-control:focus {
+    border-color: #7048e8;
+    box-shadow: 0 0 8px rgba(112, 72, 232, 0.2);
+}
+
+#userEmail2 {
+    background-color: #F3F1F5; /* 이메일 선택 창 배경색 설정 */
+}
+
+#email_verify {
+    background-color: #F3F1F5; /* 인증번호 입력 창 배경색 설정 */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem; /* Increased space above the register button */
+    margin-bottom: 1rem; /* Space above the footer links */
+}
+
+#mail-Check-Btn,
+#btnRegister {
+    background-color: #6E3CBC; /* 버튼 배경색 설정 */
+    border-color: #6E3CBC; /* 버튼 테두리 색 설정 */
+    color: white; /* 버튼 텍스트 색 설정 */
+}
+
+#mail-Check-Btn:hover,
+#btnRegister:hover {
+    background-color: #5C2EAD; /* 호버 시 배경색 설정 */
+    border-color: #5C2EAD; /* 호버 시 테두리 색 설정 */
+}
+
+.signup-links {
+    text-align: center;
+    margin-top: 1rem; /* Ensures the links are at the bottom */
+}
+
+.signup-links a {
+    text-decoration: none;
+    color: #7048e8;
+}
+
+.signup-links a:hover {
+    text-decoration: underline;
+}
+
+.mail-check-box {
+    margin-bottom: 2rem; /* Creates space between the email verification input and the register button */
+}

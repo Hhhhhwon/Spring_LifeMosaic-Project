@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.project.repository.SearchDao">
+	<select id="searchKeywordCategory" resultType="com.itwill.project.domain.SearchListItem">
+	<bind name="searchKeyword" value="'%' + dto.keyword  + '%'" />
+			select s.sub_category_id, 
+							s.sub_category_name, 
+							p.post_id, 
+							p.title, 
+							p.content as "content", 
+			                u.nickname, 
+			                u.user_id,
+			                u.PROFILE_URL as "profile",
+			                p.view_count, 
+			                nvl(pl.like_point,0) as "like_point", 
+			                count(c.post_id) as "comment_cnt", 
+			                p.created_time
+			from posts p
+			left join sub_category s on p.sub_category_id = s.sub_category_id
+			left join comments c on p.post_id = c.post_id
+			left join post_like pl on p.post_id = pl.post_id
+			left join users u on p.user_id = u.user_id
+			
+			<where>
+				<choose>
+					<when test='dto.search_category.equals("t")'>
+							upper(p.TITLE) like upper(#{searchKeyword})
+					</when>
+					<when test='dto.search_category eq "c"'>
+							upper(p.CONTENT) like upper(#{searchKeyword})
+					</when>
+					<when test='dto.search_category eq "tc"'>
+							upper(p.TITLE) like upper(#{searchKeyword})
+							or
+							upper(p.CONTENT) like upper(#{searchKeyword})
+					</when>
+					<when test='dto.search_category eq "a"'>
+							upper(u.nickname) like upper(#{searchKeyword})
+					</when>
+				</choose>
+			</where>
+
+			group by s.sub_category_id, s.sub_category_name, p.post_id,  p.title, p.content, u.nickname, u.user_id, p.view_count, pl.like_point, p.created_time, u.PROFILE_URL
+			
+			<choose>
+				<when test="dto.subcategory !=  0">
+						having s.sub_category_id = #{dto.subcategory}
+				</when>
+			</choose>
+			
+			<choose>
+				<when test='dto.orderStatus eq "upto"'>
+					order by p.created_time desc				
+				</when>
+				<when test='dto.orderStatus eq "good"'>
+					order by "like_point" desc
+				</when>
+			</choose>
+			
+	</select>
+	
+</mapper>

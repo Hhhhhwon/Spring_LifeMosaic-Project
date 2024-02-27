@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="m-0 p-1">
+	<div class="py-2 border-bottom">
+		<strong>Weekly Best</strong>
+	</div>
+
+	<!-- 아이디 리스트 div -->
+	<!-- 게시글 하나 -->
+
+	<ul class="detailweekUl">
+		<c:forEach var="all" items="${allTopic }">
+			<li class="detailLi"><span> <c:url var="categoryListPage"
+						value="/post/list/">
+						<c:param name="sub_category_id" value="${all.sub_category_id}"></c:param>
+					</c:url> <a class="mySubCategory" href="${categoryListPage}">[${all.sub_category_name }]</a></span>
+				<span> <c:url var="postDetails" value="/post/detail">
+						<c:param name="post_id" value="${all.post_id}" />
+					</c:url> <a class="myTitle text-truncate" href="${postDetails }">${all.title }</a></span>
+				<span class="commenCnt">(${all.comment_cnt })</span></li>
+		</c:forEach>
+	</ul>
+</div>

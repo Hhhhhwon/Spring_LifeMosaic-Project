@@ -1,0 +1,92 @@
+:root {
+    --light-purple: #DBC9FF; /* 밝은 보라색 */
+    --medium-purple: #9F7EEA; /* 중간 보라색 */
+    --dark-purple: #6E3CBC; /* 어두운 보라색 */
+    --text-color: #5C527F; /* 텍스트 색상 */
+    --bg-color: #FFFFFF; /* 배경색 */
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(157, 126, 234, 0.4);
+    width: 400px; /* 로그인 컨테이너 너비 조절 */
+}
+
+.login-container h2 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #F3F1F5; /* 배경색 설정 */
+}
+
+.form-control::placeholder {
+    color: var(--bg-color); /* 플레이스홀더 색상 */
+}
+/* 입력 필드 포커스 스타일 */
+.form-control:focus {
+    border: 2px solid #7048e8; /* 보라색 테두리 추가 */
+    box-shadow: 0 0 8px rgba(112, 72, 232, 0.2);
+    background-color: var(--bg-color); /* 배경색 하양으로 변경 */
+}
+/* 포커스가 해제될 때 스타일 */
+.form-control:focus:not(:focus) {
+    border: 1px solid #CCCCCC; /* 포커스 해제 시 회색 테두리로 복귀 */
+}
+
+.btn {
+    background-color: var(--medium-purple); /* 버튼 배경 색상 */
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background-color: var(--dark-purple); /* 버튼 호버 색상 */
+}
+
+.login-links a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+/* 링크 버튼 스타일 */
+.link-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+.form-control::placeholder {
+    color: #5C527F; /* 원하는 플레이스홀더 색상 */
+}

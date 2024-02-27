@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+        ul.detailweekUl {
+            font-size: 12px; 
+            color:gray;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        li.detailLi {
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        a.mySubCategory {
+            text-decoration: none;
+            color : #BFA2DB; 
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        a.myTitle {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+             font-weight: 500;
+            max-width: 110px;
+             display: inline-block;
+             vertical-align: middle;
+        }
+        
+        span.commenCnt {
+			font-size: 11px;
+		}

@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+   
+<header class="mb-3 py-4 border-bottom bg-body fixed-top">
+        <div class="container">
+
+            <!-- 로고 -->
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+ 			  <c:url var="homePage" value="/" />
+              <a href="${homePage }" class="d-flex align-items-center mb-2 mb-lg-0">
+              <img class="me-3" src="${imgPath}" alt="라이프 모자이크 로고" style="width: 120px; height: 33px"/>
+            </a>
+            
+            
+            <!-- 카테고리 -->
+
+            <ul class="nav col-12 col-lg-auto me-sm-auto mb-2 justify-content-center mb-md-0">
+              <li>
+              	<c:url var="fault" value="/post/list/">
+						<c:param name="sub_category_id" value="11"></c:param>
+				</c:url> 
+              	<a href="${fault}" class="nav-link px-2 link-body-emphasis">이거 내 잘못?</a></li>
+              <li>
+              	<c:url var="idiot" value="/post/list/">
+						<c:param name="sub_category_id" value="21"></c:param>
+				</c:url> 
+              	<a href="${idiot}" class="nav-link px-2 link-body-emphasis">나 호구냐?</a></li>
+              <li>
+              	<c:url var="envy" value="/post/list/">
+						<c:param name="sub_category_id" value="31"></c:param>
+				</c:url> 
+              	<a href="${envy}" class="nav-link px-2 link-body-emphasis">부럽지?</a></li>
+              <li>
+              	<c:url var="carAccident"
+						value="/post/list/">
+						<c:param name="sub_category_id" value="41"></c:param>
+				</c:url> 
+              	<a href="${carAccident}" class="nav-link px-2 link-body-emphasis">차사고</a></li>
+              <li>
+              	<c:url var="gameAccident"
+						value="/post/list/">
+						<c:param name="sub_category_id" value="42"></c:param>
+				</c:url> 
+              	<a href="${gameAccident}" class="nav-link px-2 link-body-emphasis">게임</a></li>
+              <li>
+              	<c:url var="etcAccident"
+						value="/post/list/">
+						<c:param name="sub_category_id" value="43"></c:param>
+				</c:url>
+              	<a href="${etcAccident}" class="nav-link px-2 link-body-emphasis">기타</a></li>
+              <li>
+              	<c:url var="freeBoard" value="/post/list/">
+						<c:param name="sub_category_id" value="51"></c:param>
+				</c:url> 
+              	<a href="${freeBoard}" class="nav-link px-2 link-body-emphasis">자유게시판</a></li>
+            </ul>
+
+    
+            <!-- 검색 창 -->
+            <c:url var="searchPage" value="/post/searchlist" />
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5" role="search" method="get" action="${searchPage }">
+                    <div class="input-group">
+                        <select name="search_category" class="style-form form-select" style="width: 120px; padding-right: 30px; padding-left: 20px;">
+                            <option value="t">제목</option>
+                            <option value="c">내용</option>
+                            <option value="tc">제목+내용</option>
+                            <option value="a">작성자</option>
+                        </select>
+                        <input  name="keyword"  class="style-form form-control" placeholder="검색" style="width: 150px;" required/>
+                    </div>
+            </form>
+    
+    
+            <!-- 계정 관련 메뉴 -->
+            <c:if test="${empty signedInUser}">
+            <%-- 로그인/회원 가입 링크 --%>
+            <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
+                <li>
+                	<c:url var="signInPage" value="/user/signin" />
+                	<a href="${signInPage}" class="nav-link px-2 link-body-emphasis">로그인</a></li>
+                <li>
+                	<c:url var="signUpPage" value="/user/signup" /> 
+                	<a href="${signUpPage}" class="nav-link px-2 link-body-emphasis">회원가입</a></li>
+            </ul>
+			</c:if>
+
+			<c:if test="${not empty signedInUser }">
+			<%-- 로그인 사용자 페이지 dropdown 버튼 --%>
+            <div class="dropdown text-end">
+              <div class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <c:url var="settingImgPage" value="/setting/settingImg" />
+                <img src="${settingImgPage}?fileName=${userProfileUrl }" alt="myProfile" class="rounded-circle" style="border: 1px solid lightgray; width:35px; height:35px;" />
+              </div>
+              <ul class="dropdown-menu text-small dropdown-menu-end mt-2">
+                <li>
+                	<c:url var="settingProfilePage" value="/setting/userProfile" />
+                	<a class="dropdown-item" href="${settingProfilePage}">프로필</a></li>
+                <li>
+                	<c:url var="settingPasswordPage" value="/setting/userManagement" />
+                	<a class="dropdown-item" href="${settingPasswordPage}">계정 관리</a></li>
+                	<c:url var="viewMyCommentPage" value="/setting/userMyComment"/>
+                <li><a class="dropdown-item" href="${viewMyCommentPage }">내가 쓴 댓글</a></li>
+                <li>
+                	<c:url var="settingmyPostListPage" value="/setting/myPostList" />
+                	<a class="dropdown-item" href="${settingmyPostListPage}">내가 쓴 게시글</a></li>
+                
+                	<c:url var="settingMyBookmarkPage" value="/setting/userMyBookmark"/>
+                <li><a class="dropdown-item" href="${settingMyBookmarkPage}">북마크</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                	<c:url var="signOutPage" value="/user/signout" />
+                	<a class="dropdown-item" href="${signOutPage}">로그아웃</a></li>
+              </ul>
+            </div>
+			</c:if>
+
+          </div>
+        </div>
+      </header>

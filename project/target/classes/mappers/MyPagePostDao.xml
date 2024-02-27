@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<!-- POSTS 테이블에서 CRUD에 필요한 SQL 문장들을 선언 -->
+<mapper namespace="com.itwill.project.repository.MyPagePostDao">
+
+<!-- 사용자 ID별 게시글 목록 가져오기 -->
+    <select id="selectPostsByUserId" parameterType="String" resultType="com.itwill.project.domain.MyPagePost">
+        SELECT 
+            USER_ID, 
+            POST_ID, 
+            TITLE, 
+            CONTENT, 
+            TO_CHAR(p.modified_time, 'YYYY.MM.dd HH:mm') as "modified_time",
+            TO_CHAR(p.created_time, 'YYYY.MM.dd HH:mm') as "created_time", 
+            SUB_CATEGORY_ID, 
+            IMAGE_PATH, 
+            VIEW_COUNT
+        FROM 
+            POSTS 
+        WHERE 
+            USER_ID = #{userId} 
+        ORDER BY 
+            CREATED_TIME DESC
+    </select>
+
+    <!-- 게시글과 관련된 댓글 수 포함하여 정보 가져오기 -->
+    <select id="selectPostsWithCommentCount" resultType="com.itwill.project.domain.MyPagePost">
+        SELECT 
+            p.POST_ID, 
+            p.USER_ID, 
+            p.TITLE, 
+            p.CONTENT, 
+            TO_CHAR(p.modified_time, 'YYYY.MM.dd HH:mm') as "modified_time",
+            TO_CHAR(p.created_time, 'YYYY.MM.dd HH:mm') as "created_time", 
+			sc.sub_category_name AS "sub_category_name", 
+            p.SUB_CATEGORY_ID, 
+            p.IMAGE_PATH, 
+            p.VIEW_COUNT,
+            COUNT(c.COMMENT_ID) AS comment_count,
+            pl.like_point
+        FROM 
+            POSTS p
+        LEFT JOIN 
+            COMMENTS c ON p.POST_ID = c.POST_ID
+        LEFT JOIN
+     		sub_category sc ON sc.sub_category_id = p.sub_category_id
+    	LEFT JOIN
+    		post_like pl on pl.post_id = p.post_id
+        WHERE 
+        p.user_id = #{user_id}
+        GROUP BY 
+            p.POST_ID, 
+            p.USER_ID, 
+            p.TITLE, 
+            p.CONTENT, 
+            p.CREATED_TIME, 
+            p.MODIFIED_TIME, 
+            p.SUB_CATEGORY_ID, 
+            p.IMAGE_PATH, 
+            p.VIEW_COUNT,
+            sc.sub_category_name,
+            pl.like_point
+        ORDER BY 
+            p.CREATED_TIME DESC
+    </select>
+
+</mapper>

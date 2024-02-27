@@ -1,0 +1,66 @@
+/* style.css */
+body {
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#top {
+    padding: 20px;
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+#left, #center, #right {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+#left, #right {
+    flex: 1;
+}
+
+#center {
+    flex: 2; /* #center를 두 배 크기로 설정 */
+}
+
+#footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#navigation {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu-item {
+    margin-top: 10px;
+    align-items: center;
+}
+
+.img-box, .image_container {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.profileImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

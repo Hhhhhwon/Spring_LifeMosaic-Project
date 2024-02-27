@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- MyBatis3 프레임워크 설정 -->
+<!-- mapper에서 쓸 도메인을 매번 쓰기 귀찮으니까 alias로 별명지정해서 쓰기 -->
+<configuration>
+    
+    <!-- mapper 파일의 resultType 속성 값으로 사용하기 위한 별명들 -->
+    <typeAliases>
+
+        <typeAlias type="com.itwill.project.domain.Post" alias="Post"/>
+        <typeAlias type="com.itwill.project.domain.PostLike" alias="PostLike"/>
+        <typeAlias type="com.itwill.project.domain.CommentLike" alias="CommentLike"/>
+        <typeAlias type="com.itwill.project.domain.CommentLikeCheck" alias="CommentLikeCheck"/>
+        <typeAlias type="com.itwill.project.domain.PostDetail" alias="PostDetail"/>
+        <typeAlias type="com.itwill.project.domain.PostLikeCheck" alias="PostLikeCheck"/>
+        <typeAlias type="com.itwill.project.domain.Bookmark" alias="Bookmark"/>
+        <typeAlias type="com.itwill.project.domain.Comment" alias="Comment"/>
+        <typeAlias type="com.itwill.project.domain.Recomment" alias="Recomment"/>
+        <typeAlias type="com.itwill.project.domain.HashTag" alias="HashTag"/>
+        <typeAlias type="com.itwill.project.domain.LeeHashTag" alias="LeeHashTag"/>
+        <!--<typeAlias type="com.itwill.spring2.domain.Post" alias="Post"/>  예시 --> 
+        <typeAlias type="com.itwill.project.domain.User" alias="User" />
+		<typeAlias type="com.itwill.project.domain.SettingUser" alias="SettingUser" />
+		<typeAlias type="com.itwill.project.domain.User" alias="UserManagement" />
+		<typeAlias type="com.itwill.project.domain.MyCommentListItem" alias="MyCommentListItem" />
+		<typeAlias type="com.itwill.project.domain.MyCommentListItemByPaging" alias="MyCommentListItemByPaging"/>
+		<typeAlias type="com.itwill.project.domain.MyBookmarkListItemByPaging" alias="MyBookmarkListItemByPaging"/>
+		<typeAlias type="com.itwill.project.domain.MemberPostListItem" alias="MemberPostListItem"/>
+    </typeAliases>
+    
+    
+    
+</configuration>

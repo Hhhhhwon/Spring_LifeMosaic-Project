@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+
+    <article class="container">
+        <!-- 타이틀 -->
+    <div style="height: 70px; background-color: #F3F1F5;" class="d-flex align-items-center justify-content-between rounded-4  m-2 px-1">
+        <div style="font-size:18px;font-weight: bold;max-width:170px;" class="py-2 px-4">나 호구냐?</div>
+    </div>
+      
+            <!-- 전체 게시글 -->
+      <div class="px-3 pb-3 bg-body rounded">
+
+
+	
+		<c:forEach var="idiot" items="${idiots}">
+		        <%-- 게시글 하나 --%>
+                <div class="border-bottom py-2">
+                    <%-- 첫 번째 줄 --%>
+                    <div class="text-body-secondary d-flex mb-1">
+                        
+                        <div class="d-flex flex-fill align-items-center">
+                            <%-- 프로필 이미지 --%>
+                            <c:url var="settingImgPage" value="/setting/settingImg" />
+                            <img src="${settingImgPage}?fileName=${idiot.profile_url }" alt="profile" class="me-2 rounded-circle" style="width: 20px; height: 20px; border: 1px solid lightgray;"/>
+                            
+                            <div class="fw-semibold" style="font-size:12px;">
+                                <%-- 닉네임 --%>
+	                            <c:url var="memberPostListPage" value="/member/memberPostList">
+									<c:param name='nickname' value='${idiot.nickname }'/>
+								</c:url>
+                                <span><a href="${memberPostListPage}" style="text-decoration:none" class="text-body-secondary" >${idiot.nickname }</a></span>
+                                
+                                <%-- 작성 시간 --%>
+                                <span class="mx-1"> · </span>
+                                <span class="time">${idiot.created_time }</span>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="text-secondary" style="font-size: 12px;">
+
+                            <%-- 조회수 --%>
+                            <span class="me-2"> 
+                            		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13">
+	                                    <g id="_01_align_center" data-name="01 align center">
+		                                    <path d="M23.821,11.181v0C22.943,9.261,19.5,3,12,3S1.057,9.261.179,11.181a1.969,1.969,0,0,0,0,1.64C1.057,14.739,4.5,21,12,21s10.943-6.261,11.821-8.181A1.968,1.968,0,0,0,23.821,11.181ZM12,19c-6.307,0-9.25-5.366-10-6.989C2.75,10.366,5.693,5,12,5c6.292,0,9.236,5.343,10,7C21.236,13.657,18.292,19,12,19Z" />
+		                                    <path d="M12,7a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z" />
+	                                    </g>
+                                    </svg>
+                                ${idiot.view_count }
+                            </span>
+    
+                            <!-- 좋아요수 -->
+                            <span class="me-2"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    id="Outline" viewBox="0 0 24 24" width="13" height="13">
+                                        <path
+                                        d="M22.773,7.721A4.994,4.994,0,0,0,19,6H15.011l.336-2.041A3.037,3.037,0,0,0,9.626,2.122L7.712,6H5a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5H18.3a5.024,5.024,0,0,0,4.951-4.3l.705-5A5,5,0,0,0,22.773,7.721ZM2,16V11A3,3,0,0,1,5,8H7V19H5A3,3,0,0,1,2,16Zm19.971-4.581-.706,5A3.012,3.012,0,0,1,18.3,19H9V7.734a1,1,0,0,0,.23-.292l2.189-4.435A1.07,1.07,0,0,1,13.141,2.8a1.024,1.024,0,0,1,.233.84l-.528,3.2A1,1,0,0,0,13.833,8H19a3,3,0,0,1,2.971,3.419Z" /></svg>
+                                ${idiot.like_point }
+                            </span>
+    
+    
+                            <!-- 댓글수 -->
+                            <span class="me-2"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="13"
+                                    height="13">
+                                        <path
+                                        d="M12.009,23.665c-.476,0-.955-.168-1.337-.507l-3.748-3.157h-2.923c-2.206,0-4-1.794-4-4V4C0,1.794,1.794,0,4,0H20c2.206,0,4,1.794,4,4v12c0,2.206-1.794,4-4,4h-2.852l-3.847,3.18c-.362,.322-.825,.484-1.293,.484ZM4,2c-1.103,0-2,.897-2,2v12c0,1.103,.897,2,2,2h3.289c.236,0,.464,.083,.645,.235l4.047,3.41,4.17-3.416c.18-.148,.405-.229,.638-.229h3.212c1.103,0,2-.897,2-2V4c0-1.103-.897-2-2-2H4Z" /></svg>
+                                ${idiot.comment_cnt }
+                            </span>
+                        </div>
+                    </div>
+    
+    
+                    <!-- 두 번째 줄/ 게시글 제목 -->
+                    <div class="fw-bold py-1">
+                    	<c:url var="postDetails" value="/post/detail">
+							<c:param name="post_id" value="${idiot.post_id}" />
+						</c:url>
+                        <a class="nav-link text-truncate" style="max-width:250px" href="${postDetails }">${idiot.title }</a>
+                    </div>
+    
+                </div>
+                <!-- 게시글 1개 종료 태그 -->
+        </c:forEach>
+            
+        </div><!-- 전체 게시글 종료 태그 -->
+      </article>

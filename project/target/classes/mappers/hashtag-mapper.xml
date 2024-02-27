@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwill.project.repository.HashtagDao">
+
+    <select id="getAllHashTag" resultType="LeeHashTag">
+        select 
+            p.post_id as post_id, 
+            ph.tag_id as post_tag_id, 
+            h.tag_name as tag_name
+        from 
+            posts p
+            inner join post_hash ph on p.post_id = ph.post_id
+            inner join hashtag h on ph.tag_id = h.tag_id
+        where 
+            p.post_id = #{post_id}
+    </select>
+
+</mapper>

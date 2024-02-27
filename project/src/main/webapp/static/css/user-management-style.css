@@ -1,0 +1,48 @@
+ body {
+            margin: 10px;
+            padding: 10px;
+            
+        }
+
+        #top {
+            padding: 20px;
+            margin: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+         #content {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            margin-top:50px;
+        }
+		  #left, #center, #right {
+            padding: 10px;
+            margin: 10px;
+        }
+		
+       
+
+        #left,#right {
+            flex: 1;
+        }
+
+        #center {
+            flex: 3; /* #center를 두 배 크기로 설정 */
+           
+        }
+      #aside {
+		    position: sticky;
+		    top: 100px;
+		    right: 300px;
+		}
+		.profileImg {
+		  width: 25px;
+		  height: 25px;
+		   border-radius: 70%;
+		  object-fit: cover;
+		  align-items: left;
+		}
+		
+		

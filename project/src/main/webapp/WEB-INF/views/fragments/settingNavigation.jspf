@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+
+<style>
+	      /* 기본적인 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 링크의 스타일 */
+        .link-container {
+        	padding:30px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        /* 각 링크의 배경색 설정 */
+        .link {
+            width: 240px;
+            height: 40px;
+            background-color: white; /* 배경색 설정 */
+            display: flex; /* 텍스트를 왼쪽에 맞추기 위해 추가 */
+            align-items: center;
+            border-radius: 10px; /* 둥근 테두리 반경 */
+            margin-bottom: 10px; /* 각 링크 아래에 간격을 줍니다. */
+        }
+
+        /* 텍스트를 왼쪽에 맞추기 */
+        .link a {
+            width: 100%;
+            display: block;
+            padding: 7px; /* 텍스트 좌우 여백 추가 */
+            box-sizing: border-box; /* 패딩을 width에 포함하도록 설정 */
+            text-align: left; /* 텍스트를 왼쪽에 맞춥니다. */
+        }
+
+        /* 기본 배경색 */
+        .link-container a {
+            background-color: white;
+            width: 100%; /* 링크가 부모 컨테이너에 꽉 차도록 설정 */
+            height: 100%;
+            color: #7F7C82;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            border-radius: 10px; /* 둥근 테두리 반경 */
+            margin-bottom: 5px; /* 각 링크 아래에 간격을 줍니다. */
+        }
+
+        /* 마우스를 올렸을 때의 배경색 */
+        .link-container a:hover {
+            background-color: #F3F1F5;
+            color: black;
+            text-decoration: underline;
+        }
+    </style>
+		<div >
+		
+			<div class="link-container" style="position: fixed;">
+			<div style= "font-size:18px;font-weight: bold; margin-bottom:40px;">
+			 내 계정
+			</div>
+			<c:url var="settingProfilePage" value="/setting/userProfile"/>
+			<div class="link"><a href="${settingProfilePage}">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512 ; margin-right:1px; margin-bottom:5px;" xml:space="preserve" class=""><g><circle cx="256" cy="128" r="128" fill="#7f7c82" opacity="1" data-original="#000000" class=""></circle><path d="M256 298.667c-105.99.118-191.882 86.01-192 192C64 502.449 73.551 512 85.333 512h341.333c11.782 0 21.333-9.551 21.333-21.333-.117-105.99-86.009-191.883-191.999-192z" fill="#7f7c82" opacity="1" data-original="#000000" class=""></path></g></svg>
+			프로필 </a></div>
+			<c:url var="settingPasswordPage" value="/setting/userManagement"/>
+			<div class="link"><a href="${settingPasswordPage }">
+			 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; margin-right:1px; margin-bottom:5px;" xml:space="preserve" class=""><g><path d="M34.283 384c17.646 30.626 56.779 41.148 87.405 23.502l.062-.036 9.493-5.483A191.51 191.51 0 0 0 192 437.055V448c0 35.346 28.654 64 64 64s64-28.654 64-64v-10.944a191.494 191.494 0 0 0 60.757-35.115l9.536 5.504c30.633 17.673 69.794 7.167 87.467-23.467 17.673-30.633 7.167-69.794-23.467-87.467l-9.472-5.461a194.15 194.15 0 0 0 0-70.187l9.472-5.461c30.633-17.673 41.14-56.833 23.467-87.467-17.673-30.633-56.833-41.14-87.467-23.467l-9.493 5.483A191.518 191.518 0 0 0 320 74.944V64c0-35.346-28.654-64-64-64s-64 28.654-64 64v10.944a191.494 191.494 0 0 0-60.757 35.115l-9.536-5.525C91.073 86.86 51.913 97.367 34.24 128s-7.167 69.794 23.467 87.467l9.472 5.461a194.15 194.15 0 0 0 0 70.187l-9.472 5.461C27.158 314.296 16.686 353.38 34.283 384zM256 170.667c47.128 0 85.333 38.205 85.333 85.333S303.128 341.333 256 341.333 170.667 303.128 170.667 256s38.205-85.333 85.333-85.333z" fill="#7f7c82" opacity="1" data-original="#000000" class=""></path></g></svg>
+			계정 관리</a></div>
+			<c:url var="settingmyPostListPage" value="/setting/myPostList"/>
+			<div class="link"> <a  href="${settingmyPostListPage }">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512; margin-right:1px; margin-bottom:5px; " xml:space="preserve"><g><path d="M16 .3a4.968 4.968 0 0 1 1.879 1.164l1.656 1.658A4.954 4.954 0 0 1 20.7 5H16zM21 7v12a5.006 5.006 0 0 1-5 5H8a5.006 5.006 0 0 1-5-5V5a5.006 5.006 0 0 1 5-5h6v5a2 2 0 0 0 2 2zm-4.192 10.413a1 1 0 0 0-1.4-.222 4.586 4.586 0 0 1-2.273.809 1.347 1.347 0 0 1-.864-.345A3.025 3.025 0 0 0 10.439 17a5.861 5.861 0 0 0-3.046 1.206 1 1 0 1 0 1.214 1.588A3.951 3.951 0 0 1 10.439 19c.246 0 .371.078.7.3a3.252 3.252 0 0 0 2 .7 6.464 6.464 0 0 0 3.456-1.193 1 1 0 0 0 .213-1.394zM17 14a1 1 0 0 0-1-1H8a1 1 0 0 0 0 2h8a1 1 0 0 0 1-1zm0-4a1 1 0 0 0-1-1H8a1 1 0 0 0 0 2h8a1 1 0 0 0 1-1z" fill="#7f7c82" opacity="1" data-original="#000000"></path></g></svg>
+			내가 쓴 게시글</a></div>
+			<c:url var="viewMyCommentPage" value="/setting/userMyComment"/>
+			<div class="link"> <a href="${viewMyCommentPage }">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512; margin-right:1px; margin-bottom:5px;" xml:space="preserve" class=""><g><path d="M20 0H4a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4h2.9l4.451 3.763a1 1 0 0 0 1.292 0L17.1 20H20a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4ZM7 5h5a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2Zm10 10H7a1 1 0 0 1 0-2h10a1 1 0 0 1 0 2Zm0-4H7a1 1 0 0 1 0-2h10a1 1 0 0 1 0 2Z" fill="#7f7c82" opacity="1" data-original="#000000" class=""></path></g></svg>
+			내가 쓴 댓글</a></div>
+			
+			<c:url var="settingMyBookmarkPage" value="/setting/userMyBookmark"/>
+			<div class="link"><a href="${settingMyBookmarkPage }">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512; margin-right:1px; margin-bottom:5px;" xml:space="preserve" class=""><g><path d="M2.849 23.55a2.954 2.954 0 0 0 3.266-.644L12 17.053l5.885 5.853a2.956 2.956 0 0 0 2.1.881 3.05 3.05 0 0 0 1.17-.237A2.953 2.953 0 0 0 23 20.779V5a5.006 5.006 0 0 0-5-5H6a5.006 5.006 0 0 0-5 5v15.779a2.953 2.953 0 0 0 1.849 2.771Z" fill="#7f7c82" opacity="1" data-original="#000000" class=""></path></g></svg>
+			스크랩</a></div>
+ 		
+			</div>
+					</div>
+					

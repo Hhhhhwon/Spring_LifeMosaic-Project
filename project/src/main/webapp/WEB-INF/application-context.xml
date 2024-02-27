@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://mybatis.org/schema/mybatis-spring https://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    	<property name="host" value="smtp.gmail.com" />
+    	<property name="port" value="587" />
+    	<!-- 나중에 테스트 + 실사용할 때 아이디와 비밀번호 채워서 하기 -->
+    	<property name="username" value="dlvlfdn567@gmail.com" />
+    	<property name="password" value="tintotclajfabehw" />
+    	<property name="javaMailProperties">
+    		<props>
+    			<prop key="mail.transport.protocol">smtp</prop> <!-- 프로토콜로 smtp 사용 -->
+    			<prop key="mail.smtp.auth">true</prop> <!-- smtp 서버에 인증이 필요 -->
+    			<!-- gmail의 경우 보안문제 업데이트로 인해 SSLSocketFactory를 추가해야 smtp 사용 가능. -->
+    			<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop> <!-- StARTTLS(TLS를 시작하는 명령)를 사용하여 암호화된 통신을 활성 -->
+                <prop key="mail.debug">true</prop> <!-- 디버깅 정보 출력 -->
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop> <!-- smtp 서버의 ssl 인증서를 신뢰 -->
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop> <!-- 사용할 ssl 프로토콜 버전 -->
+    		</props>
+    	</property>
+    </bean>
+    
+    <!-- HikariConfig 객체(bean) 생성을 위한 설정 -->
+    <!-- HikariConfig hikariConfig = new HikariConfig() -->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <!-- hikariConfig.setDriverClassName(""); -->
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <!-- 192.168.20.26 -->
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="username" value="scott" />
+        <property name="password" value="tiger" />
+    </bean>
+    
+    <!-- HikariDataSource 객체(bean) 생성을 위한 설정 -->
+    <!-- HikariDataSource ds = new HikariDataSource(config) -->
+    <bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+    
+    <!-- sqlSessionFactoryBean 
+        데이터 소스(커넥션 풀)을 이용해서 SQL 문장들을 실행/결과 처리를 하고 리턴하는 객체. -->
+    <bean id="session" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ds" />
+        <property name="mapperLocations" value="classpath:/mappers/**/*.xml" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+    </bean>
+  
+    <mybatis:scan base-package="com.itwill.project.repository"/>
+    
+    <!-- 스프링 컨테이너에서 컴포넌트 빈(예: @Service, 또는 @Component, ...)들을
+    검색할 기본 패키지를 설정
+    -->
+    <context:component-scan base-package="com.itwill.project.service" />
+    <context:component-scan base-package="com.itwill.project.web" />
+    
+
+</beans>

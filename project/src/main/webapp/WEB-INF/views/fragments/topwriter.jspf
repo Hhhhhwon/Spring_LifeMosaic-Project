@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+
+<div class="m-0 p-1">
+		<div class="py-2 border-bottom">
+			<c:url var="HallOfFame" value="/post/HallOfFame"></c:url>
+			<a class="text-decoration-none" style="color: black;" href="${HallOfFame}"> 
+				<strong>Top Writers</strong>
+			</a>
+		</div>
+
+		<!-- 아이디 리스트 div -->
+		<div>
+			<c:forEach var="writer" items="${writer}">
+	        <div class="d-flex flex-fill justify-content-between align-items-center my-3" style="font-size: 12px;">
+	            <div>
+	            	<c:url var="settingImgPage" value="/setting/settingImg" />
+					<img class="topProfileUserImg me-1" src="${settingImgPage}?fileName=${writer.profile_url }" />
+					
+					<c:url var="memberPostListPage" value="/member/memberPostList">
+						<c:param name='nickname' value='${writer.nickname }'/>
+					</c:url>
+					<a href="${memberPostListPage}" style="text-decoration:none; color:black;">
+	                <span class="align-middle fw-medium text-truncate d-inline-block" style="max-width: 130px;">${writer.nickname }</span>
+	               	</a>
+
+	            </div>
+	            <div>
+	                <span class="align-middle me-1">
+	                	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" x="0" y="0" viewBox="0 0 501.28 501.28" style="margin-bottom: 3px;enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m501.28 194.37-166.02-35.04-84.62-147.06v407.5l154.9 69.24-17.98-168.72z" style="" fill="#bfa2db" data-original="#ffcd00" opacity="1" class=""></path><path d="M166.02 159.33 0 194.37l113.72 125.92-17.98 168.72 154.9-69.24V12.27z" style="" fill="#f0d9ff" data-original="#ffda44" class="" opacity="1"></path></g></svg>
+	                </span><span class="text-secondary">${writer.cnt }</span>
+	            </div>
+	        </div>
+			</c:forEach>
+
+	</div>
+	<!-- end of card-body -->
+</div>
+<!-- end of card -->
