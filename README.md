@@ -187,10 +187,65 @@ document.addEventListener('DOMContentLoaded', function() {
 ### 👉 댓글, 대댓글 CRUD 및 태그 명확화
 ![녹화_2024_02_23_13_32_08_340](https://github.com/Hhhhhwon/spring-maven/assets/147058027/b628a90b-33f5-4ede-adfc-9a947b45d28b)
 
-### 🚨 
-- 알 수 없는 오류로 comment.js 가 열리지않아 코드 첨부가 어려움..
-- 최종 커밋을 못했기 때문에 해결하면 올릴예정입니다
+
 ```javascript
+
+        console.log('comment_id:', comment_id); // comment_id 로그 찍기
+
+// 기존에 활성화된 에디터
+let activeEditor = null;
+initializeEditor(comment_id);
+
+// 에디터 초기화 함수
+function initializeEditor(commentId) {
+    return ClassicEditor
+        .create(document.querySelector(`#editor-${commentId}`))
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                const editorValue = editor.getData();
+                document.querySelector(`#editor-${commentId}`).value = editorValue;
+            });
+            activeEditor = editor; // 활성화된 에디터 저장
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+// '댓글 쓰기' 버튼에 대한 클릭 이벤트 핸들러 등록
+document.querySelectorAll('small#recomment').forEach(recommentButton => {
+    recommentButton.addEventListener('click', function() {
+        // 클릭된 버튼의 data-id 속성을 가져와 commentId 변수에 저장
+        const commentId = this.getAttribute('data-id');
+
+        // activeEditor 변수가 존재하는지 확인
+        if (activeEditor) {
+            // activeEditor 변수를 editor 변수에 할당
+            const editor = activeEditor;
+            
+            // 클릭된 버튼의 부모 요소에서 'span#nickname'에 해당하는 요소를 찾아 닉네임을 가져와 nickname 변수에 저장
+            const nickname = this.parentElement.querySelector('span#nickname').textContent.trim();
+
+            // 현재 에디터의 콘텐츠를 가져와 currentContent 변수에 저장
+            const currentContent = editor.getData();
+            
+            // 스타일이 적용된 닉네임을 생성하고 styledNickname 변수에 저장
+            const styledNickname = `<i class="text-purple font-italic">@${nickname}</i>`;
+            
+            // 에디터의 콘텐츠에 스타일이 적용된 닉네임을 추가
+            editor.setData(currentContent + styledNickname);
+
+            // 콘솔에 댓글 ID와 닉네임 출력
+            console.log('comment_id:', commentId);
+            console.log('nickname:', nickname);
+        } else {
+            // activeEditor가 없을 경우 에러 메시지 출력
+            console.error('에디터를 찾을 수 없습니다.');
+        }
+    });
+});
+
+```
 
 // 댓글 및 게시글 대댓글 전부 년월일이 아닌 시간으로 변경
 
