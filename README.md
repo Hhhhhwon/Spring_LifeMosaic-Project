@@ -192,26 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('comment_id:', comment_id); // comment_id 로그 찍기
 
-// 기존에 활성화된 에디터
-let activeEditor = null;
-initializeEditor(comment_id);
-
-// 에디터 초기화 함수
-function initializeEditor(commentId) {
-    return ClassicEditor
-        .create(document.querySelector(`#editor-${commentId}`))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                const editorValue = editor.getData();
-                document.querySelector(`#editor-${commentId}`).value = editorValue;
-            });
-            activeEditor = editor; // 활성화된 에디터 저장
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-
 // '댓글 쓰기' 버튼에 대한 클릭 이벤트 핸들러 등록
 document.querySelectorAll('small#recomment').forEach(recommentButton => {
     recommentButton.addEventListener('click', function() {
@@ -246,7 +226,7 @@ document.querySelectorAll('small#recomment').forEach(recommentButton => {
 });
 
 ```
-
+```java
 // 댓글 및 게시글 대댓글 전부 년월일이 아닌 시간으로 변경
 
 /**
