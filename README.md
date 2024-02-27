@@ -44,7 +44,7 @@
 - 사용자 간 소통을 위한 좋아요, 싫어요 기능
 - 
 # 🛠️ 프로젝트 역할
-![alt text](image-1.png)
+![alt text](image-1.png)(https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-1.png?raw=true)
 
 ## 홈 화면
 
