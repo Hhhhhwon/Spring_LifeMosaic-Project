@@ -33,9 +33,7 @@
 ![image](https://github.com/Hhhhhwon/spring-maven/assets/147058027/73e13a7f-55c5-49ca-bf11-0b58df3afe94)
 
 
-# 🛠️ 프로젝트 역할
 
-![image-1](https://github.com/Hhhhhwon/spring-maven/assets/147058027/2b0beafb-3269-424a-817a-bd2d40fb4833)
 
 
 # ⚙️ 주요 기능
