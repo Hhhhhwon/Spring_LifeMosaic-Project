@@ -44,64 +44,63 @@
 - 사용자 간 소통을 위한 좋아요, 싫어요 기능
 - 
 # 🛠️ 프로젝트 역할
-![alt text](image-1.png)(https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-1.png?raw=true)
-
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-1.png?raw=true)
 ## 홈 화면
 
-![alt text](image-2.png)
+![alt](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-2.png?raw=true)
 ## 메인 페이지
-![alt text](image-3.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-3.png?raw=true)
 ## 로그인 페이지
-![alt text](image-4.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-4.png?raw=true)
 
 ## 회원가입 페이지
 
-![alt text](image-5.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-5.png?raw=true)
 ## 마이 페이지
 
-![alt text](image-6.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-6.png?raw=true)
 
 ## 마이 페이지 (프로필)
 
-![alt text](image-7.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-7.png?raw=true)
 
 ## 마이 페이지(계정관리 및 스크랩)
 
-![alt text](image-8.png)
-![alt text](image-9.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-8.png?raw=true)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-9.png?raw=true)
 
 ## 회원 게시글 페이지
 
-![alt text](image-10.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-10.png?raw=true)
 ## 게시판 리스트 페이지
 
-![alt text](image-11.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-11.png?raw=true)
 
 ## 글 작성 페이지
 
-![alt text](image-12.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-12.png?raw=true)
 
 ## 글 수정 페이지 
 
-![alt text](image-13.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-13.png?raw=true)
 
 ## 글 상세 페이지
 
-![alt text](image-14.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-14.png?raw=true)
 
-![alt text](image-15.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-15.png?raw=true)
 
-![alt text](image-16.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-16.png?raw=true)
 
 ## 검색 페이지
-![alt text](image-17.png)
+![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-17.png?raw=true)
   
 
 ---
 
 ## 🌟🌟🌟 담당 업무 🌟🌟🌟
 
-### 👉 좋아요 싫어요 수정 그래프 수치화 즉시반영 및 중복 선택 불가능
+### 👉 좋아요 싫어요 중복 선택 수정 그래프 수치화 실시간반영 
 ![녹화_2024_02_23_13_31_28_653](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5b0e2aed-7875-4ca9-9e16-5a05a0eaeace)
 
 ```javascript
