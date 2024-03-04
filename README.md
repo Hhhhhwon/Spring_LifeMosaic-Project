@@ -1,4 +1,4 @@
-# LifeMosaic - 프로젝트 포트폴리오
+# LifeMosaic - 게시판 프로젝트
 
 
 
