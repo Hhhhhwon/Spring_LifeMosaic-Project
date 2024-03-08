@@ -274,7 +274,7 @@ function timeAgo(date) {
 
 ```
 
-###  👉 사용자 편의성 에러 핸들러 페이지
+###  👉  에러 페이지
 ![alt text](https://github.com/Hhhhhwon/Spring_LifeMosaic-Project/blob/main/image/%EB%85%B9%ED%99%94_2024_02_23_16_49_57_355.gif?raw=true)
 ```xml
 
