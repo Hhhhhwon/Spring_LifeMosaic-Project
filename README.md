@@ -42,7 +42,6 @@
 - 프로필 이미지 변경 및 북마크 기능
 - 댓글, 대댓글 작성 및 조회, 대댓글 사용자 태그 명확화
 - 사용자 간 소통을 위한 좋아요, 싫어요 기능
-- 
 # 🛠️ 프로젝트 역할
 ![alt text](https://github.com/Hhhhhwon/spring-maven/blob/main/image/image-1.png?raw=true)
 ## 홈 화면
@@ -100,7 +99,7 @@
 
 ## 🌟🌟🌟 담당 업무 🌟🌟🌟
 
-### 👉 좋아요 싫어요 기능  중복 선택 및 그래프 수치화 실시간반영  (REST API - Axios)
+### 👉 좋아요 싫어요 기능 구현 중복 선택 X  및 Chart.js  실시간반영  (REST API - Axios)
 ![녹화_2024_02_23_13_31_28_653](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5b0e2aed-7875-4ca9-9e16-5a05a0eaeace)
 
 ```javascript
@@ -118,7 +117,7 @@ if (existingChart) {
 
 ```
 
-### 👉게시판 CRUD 구현  에디터를 이용한 상세보기 시 클릭한 링크로 이동 및 동영상 추가 (Youtube video)
+### 👉게시판 CRUD 기능 구현  에디터를 이용한 상세보기 시 클릭한 링크로 이동 및 동영상 추가 (Youtube video)
 ![녹화_2024_02_23_16_22_37_451](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5c01d7d1-001e-479a-aec8-b4fc77906532)
 
 ```javascript
