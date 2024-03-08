@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ```
 
-### 👉 댓글, 대댓글 CRUD 구현 및 태그 명확화 ![(REST API - Axios)](https://github.com/Hhhhhwon/Spring_LifeMosaic-Project/blob/main/project/src/main/webapp/static/js/comment.js)
+### 👉 댓글, 대댓글 CRUD 구현 및 태그 명확화 [(REST API - Axios)](https://github.com/Hhhhhwon/Spring_LifeMosaic-Project/blob/main/project/src/main/webapp/static/js/comment.js)
 ![녹화_2024_02_23_13_32_08_340](https://github.com/Hhhhhwon/spring-maven/assets/147058027/b628a90b-33f5-4ede-adfc-9a947b45d28b)
 
 
