@@ -99,7 +99,7 @@
 
 ## 🌟🌟🌟 담당 업무 🌟🌟🌟
 
-### 👉 좋아요 싫어요 기능 구현 중복 선택 X  및 Chart.js  실시간반영  (REST API - Axios)
+### 👉 좋아요 싫어요 기능 구현 중복 선택 X  및 Chart.js  실시간반영  [(REST API - Axios)](https://github.com/Hhhhhwon/Spring_LifeMosaic-Project/blob/main/project/src/main/webapp/static/js/like.js)
 ![녹화_2024_02_23_13_31_28_653](https://github.com/Hhhhhwon/spring-maven/assets/147058027/5b0e2aed-7875-4ca9-9e16-5a05a0eaeace)
 
 ```javascript
